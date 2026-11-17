@@ -1,0 +1,20 @@
+
+# Java / Maven
+target/
+*.class
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+
+# VS Code
+.vscode/
+
+# Ambiente e credenciais
+.env
+.env.*
+!.env.example
+
+# Arquivos temporários
+*.log
