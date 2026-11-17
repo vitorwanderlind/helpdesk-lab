@@ -2,35 +2,34 @@
 package br.com.helpdesklab.backend.service;
 
 import br.com.helpdesklab.backend.model.Chamado;
+import br.com.helpdesklab.backend.repository.ChamadoRepository;
+
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class ChamadoService {
 
-    private final List<Chamado> chamados = new ArrayList<>();
-    private final AtomicLong sequencia = new AtomicLong(1);
+    private final ChamadoRepository chamadoRepository;
 
-    public synchronized List<Chamado> listar() {
-        return new ArrayList<>(chamados);
+    public ChamadoService(ChamadoRepository chamadoRepository) {
+        this.chamadoRepository = chamadoRepository;
     }
 
-    public synchronized Chamado criar(String titulo, String descricao) {
+    public List<Chamado> listar() {
+        return chamadoRepository.findAll();
+    }
 
-        Long id = sequencia.getAndIncrement();
+    public Chamado criar(String titulo, String descricao) {
 
         Chamado chamado = new Chamado(
-            id,
+            null,
             titulo,
             descricao,
             "ABERTO"
         );
 
-        chamados.add(chamado);
-
-        return chamado;
+        return chamadoRepository.save(chamado);
     }
 }
