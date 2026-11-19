@@ -50,4 +50,17 @@ public class Chamado {
     public String getStatus() {
         return status;
     }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

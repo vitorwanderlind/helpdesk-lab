@@ -7,6 +7,7 @@ import br.com.helpdesklab.backend.repository.ChamadoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChamadoService {
@@ -32,4 +33,39 @@ public class ChamadoService {
 
         return chamadoRepository.save(chamado);
     }
+
+    public Optional<Chamado> buscarPorId(Long id) {
+        return chamadoRepository.findById(id);
+    }
+
+    public Optional<Chamado> atualizar(
+            Long id,
+            String titulo,
+            String descricao,
+            String status) {
+
+        return chamadoRepository.findById(id)
+            .map(chamado -> {
+                chamado.setTitulo(titulo);
+                chamado.setDescricao(descricao);
+                chamado.setStatus(status);
+
+                return chamadoRepository.save(chamado);
+            });
+    }
+
+
+    public boolean excluir(Long id) {
+
+        if (!chamadoRepository.existsById(id)) {
+            return false;
+        }
+
+        chamadoRepository.deleteById(id);
+
+        return true;
+    }
+
+
+
 }
