@@ -1,0 +1,44 @@
+
+@use '@angular/material' as mat;
+
+// Tipografia local
+@import '@fontsource/roboto/latin-300.css';
+@import '@fontsource/roboto/latin-400.css';
+@import '@fontsource/roboto/latin-500.css';
+@import '@fontsource/roboto/latin-600.css';
+@import '@fontsource/roboto/latin-700.css';
+
+// Iconografia local
+@import 'material-symbols/outlined.css';
+
+// Tema global Angular Material
+html {
+  height: 100%;
+  font-size: 14px;
+
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+// Estilos globais
+body {
+  margin: 0;
+  min-height: 100%;
+  color-scheme: light;
+
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+}
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,81 @@
+
+<main class="container">
+
+  <header class="page-header">
+    <h1>{{ title() }}</h1>
+    <p>{{ descricao() }}</p>
+  </header>
+
+  <mat-card appearance="outlined">
+
+    <mat-card-header>
+      <mat-card-title>
+        Aprendendo Angular Material
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Nosso primeiro componente Material Design 3
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="conteudo">
+
+        <mat-chip-set aria-label="Tecnologias utilizadas">
+          <mat-chip>Angular</mat-chip>
+          <mat-chip>Material Design 3</mat-chip>
+          <mat-chip>Open Source</mat-chip>
+        </mat-chip-set>
+
+        <div class="contador">
+          {{ contador() }}
+        </div>
+
+        <div class="acoes">
+
+          <button
+            matButton="outlined"
+            [disabled]="contador() <= 0"
+            (click)="decrementar()">
+
+            <mat-icon fontSet="material-symbols-outlined">
+              remove
+            </mat-icon>
+
+            Diminuir
+          </button>
+
+          <button
+            matButton="filled"
+            (click)="incrementar()">
+
+            <mat-icon fontSet="material-symbols-outlined">
+              add
+            </mat-icon>
+
+            Aumentar
+          </button>
+
+          <button
+            matButton="outlined"
+            (click)="zerar()">
+
+            <mat-icon fontSet="material-symbols-outlined">
+              restart_alt
+            </mat-icon>
+
+            Zerar
+          </button>
+
+        </div>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</main>
+
+<router-outlet></router-outlet>
